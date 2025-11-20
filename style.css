@@ -579,3 +579,25 @@ footer p {
 
 /* small helper */
 .visually-hidden { position: absolute !important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap }
+
+/* INVERT ICONS IN DARK MODE */
+/* By default (Dark Mode), invert ONLY icons to white */
+.icon, .contact-icon {
+  filter: invert(100%);
+}
+
+/* In Light Mode, revert them back to normal (black) */
+:root.light .icon, 
+:root.light .contact-icon {
+  filter: none;
+}
+
+/* Ensure Project Images and Profile Pictures NEVER invert */
+.project-img,
+.section__pic-container img, 
+.about-pic {
+  filter: none !important;
+}
+
+/* small helper */
+.visually-hidden { position: absolute !important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap }
