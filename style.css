@@ -1,5 +1,31 @@
 /* GENERAL */
 
+:root{
+  --bg: #0b0f12;
+  --surface: #0f1416;
+  --text: #e6f0ea;
+  --muted: #9aa6a1;
+  --accent: #2ee6b6;
+  --duration: 420ms;
+  --easing: cubic-bezier(.22,.9,.36,1); /* smooth */
+}
+
+/* Light mode variables */
+:root.light {
+  --bg: #f7f7f9;
+  --surface: #ffffff;
+  --text: #0b1220;
+  --muted: #4b5860;
+  --accent: #0b84ff;
+}
+
+/* Apply theme colors */
+html {
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--duration) var(--easing), color var(--duration) var(--easing);
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
@@ -16,7 +42,7 @@ html {
 }
 
 p {
-  color: rgb(85, 85, 85);
+  color: var(--muted); /* Changed from rgb(85, 85, 85) */
 }
 
 /* TRANSITION */
@@ -46,16 +72,16 @@ nav {
 }
 
 a {
-  color: black;
+  color: var(--text); /* Changed from black */
   text-decoration: none;
   text-decoration-color: white;
 }
 
 a:hover {
-  color: grey;
+  color: var(--muted); /* Changed from grey */
   text-decoration: underline;
   text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
+  text-decoration-color: var(--muted);
 }
 
 .logo {
@@ -89,7 +115,7 @@ a:hover {
 .hamburger-icon span {
   width: 100%;
   height: 2px;
-  background-color: black;
+  background-color: var(--text); /* Changed from black */
   transition: all 0.3 ease-in-out;
 }
 
@@ -97,7 +123,7 @@ a:hover {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: white;
+  background-color: var(--surface); /* Changed from white */
   width: fit-content;
   max-height: 0;
   overflow: hidden;
@@ -109,7 +135,7 @@ a:hover {
   padding: 10px;
   text-align: center;
   font-size: 1.5rem;
-  color: black;
+  color: var(--text); /* Changed from black */
   text-decoration: none;
   transition: all 0.3 ease-in-out;
 }
@@ -169,12 +195,31 @@ section {
   height: 80vh;
 }
 
+/* ... existing code above ... */
+
 .section__pic-container {
   display: flex;
   height: 400px;
   width: 400px;
   margin: auto 0;
 }
+
+/* --- PASTE THIS CODE HERE --- */
+/* This targets ONLY the profile picture to make it a circle */
+#profile .section__pic-container img {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensures the image doesn't look squished on phones */
+}
+/* --------------------------- */
+
+.section__text {
+  align-self: center;
+  text-align: center;
+}
+
+/* ... existing code below ... */
 
 .section__text {
   align-self: center;
@@ -231,7 +276,7 @@ section {
 
 .btn-color-1,
 .btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+  border: 0.1rem solid var(--text); /* Changed from rgb(53,53,53) */
 }
 
 .btn-color-1:hover,
@@ -241,20 +286,21 @@ section {
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
-  color: white;
+  background: var(--text); /* Changed from rgb(53,53,53) */
+  color: var(--bg);        /* Text becomes background color on hover */
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+  background: var(--muted); /* Changed from rgb(0,0,0) for better visibility */
 }
 
 .btn-color-2 {
   background: none;
+  color: var(--text); /* Ensure text is visible in dark mode */
 }
 
 .btn-color-2:hover {
-  border: rgb(255, 255, 255) 0.1rem solid;
+  border: 0.1rem solid var(--text);
 }
 
 .btn-container {
@@ -296,10 +342,9 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  background: var(--surface); /* Changed from white */
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
+  border: 0.1rem solid var(--muted); /* Changed from rgb(53,53,53) */
   text-align: center;
 }
 
@@ -321,7 +366,7 @@ section {
 }
 
 .experience-sub-title {
-  color: rgb(85, 85, 85);
+  color: var(--text); /* Changed from rgb(85,85,85) */
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
@@ -376,8 +421,8 @@ article .icon {
 }
 
 .color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+  border-color: var(--muted);
+  background: var(--surface); /* Changed from rgb(250,250,250) */
 }
 
 .project-img {
@@ -388,12 +433,12 @@ article .icon {
 
 .project-title {
   margin: 1rem;
-  color: black;
+  color: var(--text); /* Changed from black */
 }
 
 .project-btn {
-  color: black;
-  border-color: rgb(163, 163, 163);
+  color: var(--text); /* Changed from black */
+  border-color: var(--muted);
 }
 
 /* CONTACT */
@@ -409,9 +454,8 @@ article .icon {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  background: (250, 250, 250);
+  border: 0.1rem solid var(--muted);
+  background: var(--surface);
   margin: 2rem auto;
   padding: 0.5rem;
 }
@@ -446,3 +490,92 @@ footer {
 footer p {
   text-align: center;
 }
+
+/* Example surface element */
+.header, .card {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), var(--surface));
+  transition: background var(--duration) var(--easing), box-shadow var(--duration) var(--easing);
+}
+
+/* Toggle styling */
+.theme-toggle{
+  --size: 48px;
+  position: absolute; /* Ensures button is positioned relative to nav */
+  right: 3rem;        /* Moves button to right */
+  top: 1.5rem;        /* Moves button to top */
+  width: calc(var(--size) * 1.8);
+  height: var(--size);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  display: inline-flex;
+  align-items: center;
+  padding: 6px;
+  gap: 8px;
+  cursor: pointer;
+  transition: background var(--duration) var(--easing), border-color var(--duration) var(--easing);
+  outline: none;
+}
+
+/* Knob */
+.theme-toggle .knob{
+  position: absolute;
+  right: 6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff, #e9eef2);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transform: translateX(0);
+  transition: transform var(--duration) var(--easing), box-shadow var(--duration) var(--easing);
+}
+
+/* When in light mode, move knob left and swap icons */
+:root.light .theme-toggle { border-color: rgba(0,0,0,0.06); }
+:root.light .theme-toggle .knob { transform: translateX(calc(-100% - 8px)); }
+
+.theme-toggle .icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity calc(var(--duration)/1.2) var(--easing), transform calc(var(--duration)/1.2) var(--easing);
+  fill: var(--accent);
+}
+
+/* Show correct icon based on theme */
+:root .theme-toggle .moon { opacity: 1; transform: scale(1); } /* default dark shows moon */
+:root.light .theme-toggle .moon { opacity: 0; transform: scale(.8); }
+:root.light .theme-toggle .sun  { opacity: 1; transform: scale(1); }
+
+/* Respect reduced motion */
+@media screen and (max-width: 1200px) {
+  #theme-toggle {
+    right: 4rem;
+    top: 1.5rem;
+    transform: scale(0.7); /* Makes it slightly smaller on mobile */
+  }
+}
+
+/* INVERT ICONS IN DARK MODE - FIX FOR INVISIBLE ICONS */
+/* By default (Dark Mode), invert black icons to white */
+.icon, .contact-icon, .project-img {
+  filter: invert(100%);
+}
+
+/* In Light Mode, revert them back to normal (black) */
+:root.light .icon, 
+:root.light .contact-icon, 
+:root.light .project-img {
+  filter: none;
+}
+
+/* Prevent the Profile Picture from inverting */
+.section__pic-container img, 
+.about-pic {
+  filter: none !important;
+}
+
+/* small helper */
+.visually-hidden { position: absolute !important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap }

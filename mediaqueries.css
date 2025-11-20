@@ -86,11 +86,13 @@
     gap: 0.5rem;
     text-align: center;
   }
-  .section__pic-container {
-    width: auto;
-    height: 46vw;
+ .section__pic-container {
+    width: 46vw;          /* CHANGED: Was 'auto', now matches height to make it a square */
+    height: 46vw;         /* Height is 46vw */
     justify-content: center;
+    margin: 0 auto 2rem;  /* ADDED: Ensures the square stays centered in the middle */
   }
+  
   .section__text__p2 {
     font-size: 1.25rem;
   }
